@@ -6,20 +6,23 @@ import {
   Switch
 } from "react-router-dom";
 
+import Header from "./components/Header";
+import Home from "./containers/Home";
+import Leaderboard from "./containers/Leaderboard";
+
 const App = () => {
 
   return (
     <Router>
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/leaderboard">Leaderboard</Link>
+        <Header />
 
         <Switch>
           <Route path="/leaderboard">
-            <h1>leaderbaord</h1>
+            <Leaderboard />
           </Route>
           <Route path="/">
-            <h1>home</h1>
+            <Home />
           </Route>
         </Switch>
       </div>

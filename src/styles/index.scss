@@ -1,0 +1,30 @@
+@import "colors";
+
+* {
+  margin: 0;
+  font-family: verdana, sans-serif;
+}
+
+.header {
+  background-color: $orange;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding-left: 40px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-item {
+    padding: 30px 40px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+}
