@@ -33,7 +33,6 @@ const App = () => {
       }
       else return cat;
     }))
-    console.log("updated", catId);
   };
 
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import LeaderboardCard from "../components/LeaderboardCard";
 
 const Leaderboard = ({cats}) => {
   return (
@@ -8,10 +9,7 @@ const Leaderboard = ({cats}) => {
           .sort((a,b) => a.votes < b.votes ? 1 : -1)
           .map(cat => {
           return (
-            <div key={cat.id}>
-              <img width="80px" src={cat.url} alt={cat.id}/>
-              <span>Votes: {cat.votes} - {cat.id}</span>
-            </div>
+            <LeaderboardCard cat={cat}/>
           )
         })
       }

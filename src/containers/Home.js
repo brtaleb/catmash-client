@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getTwoRandomElements} from "../utils/utils";
 import {catService} from "../services/catService";
+import VotingCard from "../components/VotingCard";
 
 const Home = ({cats, updateCats}) => {
 
@@ -20,16 +21,16 @@ const Home = ({cats, updateCats}) => {
 
   if(currentCats.length > 0){
     return (
-      <div>
-        <div onClick={() => vote(currentCats[0].id)}>
-          <img width="80px" src={currentCats[0].url} alt={currentCats[0].id}/>
+      <div className="voting-page">
+        <div className="left">
+          <VotingCard cat={currentCats[0]} vote={vote} />
         </div>
 
-        <div onClick={() => vote(currentCats[1].id)}>
-          <img width="80px" src={currentCats[1].url} alt={currentCats[1].id}/>
+        <div className="right">
+          <VotingCard cat={currentCats[1]} vote={vote} />
         </div>
 
-        <button onClick={() => setCurrentCats(getTwoRandomElements(cats))}>
+        <button className="skip-button" onClick={() => setCurrentCats(getTwoRandomElements(cats))}>
           Skip
         </button>
       </div>
