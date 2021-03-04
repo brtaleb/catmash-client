@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   BrowserRouter as Router,
-  Link,
   Route,
   Switch
 } from "react-router-dom";
@@ -9,8 +8,33 @@ import {
 import Header from "./components/Header";
 import Home from "./containers/Home";
 import Leaderboard from "./containers/Leaderboard";
+import {catService} from "./services/catService";
 
 const App = () => {
+
+  const [cats, setCats] = useState([]);
+
+  useEffect(() => {
+    catService
+      .getCats()
+      .then(response => {
+        setCats(response.data.data)
+      })
+      .catch(e => {
+        console.log(e);
+      })
+  }, []);
+
+  const updateCats = (catId) => {
+    setCats(cats.map(cat => {
+      if(cat.id === catId) return {
+        ...cat,
+        votes: ++cat.votes
+      }
+      else return cat;
+    }))
+    console.log("updated", catId);
+  };
 
   return (
     <Router>
@@ -19,10 +43,10 @@ const App = () => {
 
         <Switch>
           <Route path="/leaderboard">
-            <Leaderboard />
+            <Leaderboard cats={cats} />
           </Route>
           <Route path="/">
-            <Home />
+            <Home  cats={cats} updateCats={updateCats}/>
           </Route>
         </Switch>
       </div>
