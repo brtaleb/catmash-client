@@ -36,6 +36,6 @@ const Home = ({cats, updateCats}) => {
       </div>
     )
   }
-  else return <div/>
+  else return (<h3>Loading...</h3>)
 }
 export default Home;
